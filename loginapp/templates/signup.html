@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="icon" href="abc.png" type="image/png">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        .image-half {
+            flex: 1;
+            background-image: url('bgkk.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .form-half {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f8ff;
+        }
+        .form-container {
+            width: 80%;
+            max-width: 400px;
+            padding: 50px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 36px;
+            text-align: center;
+            color: #0077be;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 25px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #0077be;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #005f9e;
+        }
+        .login-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-link {
+            color: #0077be;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-half"></div>
+        <div class="form-half">
+            <div class="form-container">
+                <h2>Register</h2>
+                <form method='post'>
+                    {%csrf_token%}
+
+                    Render form fields dynamically
+                    {% for field in form %}
+                    <div class="input-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                        <div class="error-message">
+                            {% for error in field.errors %}
+                            {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    
+                    <button type="submit">Register</button>
+                </form>
+                <p class="login-text">Already have an account? <a href="{% url 'login' %}" class="login-link">Login</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
