@@ -13,7 +13,8 @@ urlpatterns = [
     path('services/',views.services_page,name='service_page'),
     path('contacts/',views.contacts_page,name='contact_page'),
     path('chatbot/',views.chatbot_page,name="chatbot_page"),
-    path('pneumoniadiv/',views.pneumonia_div,name='pneumonia_div')
+    path('pneumoniadiv/',views.pneumonia_div,name='pneumonia_div'),
+    path('update_profile/',views.update_profile,name='profile')
     
     
 ]

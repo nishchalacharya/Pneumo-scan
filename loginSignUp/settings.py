@@ -38,8 +38,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "loginapp"
+    "loginapp",
+    "channels",
+    "chatapp"
 ]
+
+ASGI_APPLICATION = 'loginSignUp.asgi.application'  # requires for channel in django  along with channel layers as mentioned below: 
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
