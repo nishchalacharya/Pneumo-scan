@@ -1,0 +1,11 @@
+<h1>This is blog_home page </h1>
+
+{% for post in object_list %}
+{{post.title}}
+{{post.author.username}}-{{post.author.email}}
+{{post.body}}
+
+<a href="{% url 'detailblogview' post.pk %}"> {{post.title}} </a>
+<br>
+{% endfor %}
+

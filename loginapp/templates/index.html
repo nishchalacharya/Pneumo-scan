@@ -1,0 +1,292 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PneumoScan</title>
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <link rel="shortcut icon" href="images/abc.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+<body>
+   
+    <section id="hero">
+        <nav class="navigation">
+            <input type="checkbox" class="menu-btn" id="menu-btn">
+            <label for="menu-btn" class="menu-icon">
+                <span class="nav-icon"></span>
+            </label>
+            <div class="logoo">
+            <a href="#hero" class="logo">Pneumo<span>Scan</span></a>
+            <p>AI For Pneumonia Detection</p>
+            </div>
+            <ul class="menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#our-services">Our Services</a></li>
+                <li><a href="#contact-us">Contact us</a></li>
+                <li><a href="#">Blogs</a></li>
+            </ul>
+            
+            <a href="#" class="chatbot-button">ChatBot</a>
+        </nav>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Accurate Pneumonia Detection Powered by Advanced X-Ray Technology.</h1>
+                <p>Accurate Pneumonia Detection Made Simple.</p>
+           <div class="hero-text-btns">
+            <a href="#our-story">Learn More</a>
+            <a href="#">
+                <i class="fa-solid fa-user"></i>
+                View My Profile</a>
+           </div>
+            </div>
+            <div class="hero-img"><img src="{%static 'images/homepagedocccy.png' %}" alt=""></div>
+        </div>
+    </section>
+    <section class="what-we-provide">
+        <div class="w-info-box w-info-box1">
+            <div class="w-info-icon">
+            <i class="fa-solid fa-capsules"></i>
+        </div>
+        <div class="w-info-text">
+            <strong>Specialized Service</strong>
+            <p>Our AI-powered technology analyzes chest X-rays with precision and accuracy.</p>
+        </div>
+        </div>
+        <div class="w-info-box w-info-box2">
+            <div class="w-info-icon">
+                <i class="fa-regular fa-comment"></i>
+        </div>
+        <div class="w-info-text">
+            <strong>24/7 Advanced Care</strong>
+            <p>We are available to assist you with any questions or concerns, 24 hours a day, 7 days a week.</p>
+        </div>
+        </div>
+        <div class="w-info-box w-info-box3">
+            <div class="w-info-icon">
+                <i class="fa-solid fa-square-poll-horizontal"></i>
+        </div>
+        <div class="w-info-text">
+            <strong>Get Results Online</strong>
+            <p>Access your test results securely and conveniently from anywhere with an internet connection.</p>
+        </div> 
+        </div>
+    </section>
+
+<section id="our-story">
+    <div class="our-story-img">
+        <img src="{% static 'images/webp.jpeg'%}" alt="">
+    </div>
+    <div class="our-story-text">
+        <h2>About Us</h2>       
+        <p>Our project, "PneumoScan: AI for Pneumonia Detection," aims to harness the power of AI to develop a robust and reliable tool for the automated detection of pneumonia from chest X-rays. By integrating AI into the diagnostic process, we aim to enhance the accuracy and efficiency of pneumonia diagnosis, reduce the workload on radiologists, and improve access to diagnostic services in underserved areas. This tool will not only support healthcare providers in making timely and accurate diagnoses but also help in optimizing treatment plans, ultimately improving patient outcomes. "PneumoScan" leverages state-of-the-art deep learning algorithms to build a model trained on a large dataset of labeled chest X-ray images. The AI system is designed to identify characteristic patterns and anomalies associated with pneumonia, providing a probability score and visual heatmaps to assist clinicians in their decision-making process. The development of this AI tool involves rigorous testing and validation to ensure its robustness and generalizability across diverse patient populations and imaging conditions. By addressing the limitations of traditional diagnostic methods and leveraging AI technology, "PneumoScan" aims to revolutionize the field of medical imaging, offering a scalable and cost-effective solution for pneumonia detection. This project is a step forward in the integration of AI in healthcare, demonstrating the potential of technology to enhance clinical practice and improve patient care outcomes globally.</p>
+    </div>
+</section>
+<section id="our-services">
+    <div class="services-heading">
+        <div class="services-heading-text">
+            <strong>Our Services</strong>
+            <h2>High Quality Services For You</h2>
+        
+        </div>
+    </div>
+    <div class="services-box-container">
+        <div class="swiper mySwiperservices">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="services-box s-box1">
+                    <i class="fa-solid fa-lungs"></i>
+                    <strong>Pneumonia Detection</strong>
+                    <p>AI-powered analysis of chest X-rays for rapid and accurate pneumonia detection.</p>
+                    <a href="{%url 'pneumonia_div'%}">Try it</a>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="services-box s-box2">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <strong>Doctor Consultation</strong>
+                    <p>AI-powered analysis of chest X-rays for rapid and accurate pneumonia detection.</p>
+                    <a href="#">Try it</a>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="services-box s-box3">
+                    <i class="fa-solid fa-lungs"></i>
+                    <strong>Tuberculosis  Detection</strong>
+                    <p>AI-powered analysis of chest X-rays for rapid and accurate Tuberculosis detection.</p>
+                    <a href="#">Coming Soon</a>
+                </div>
+              </div>
+            </div>
+          </div>   
+    </div>
+    <span class="service-help-btn">Contact Us If You Need Any Help or Services.<a href="#contact-us">Let's Get Started</a></span>
+</section>
+
+<section id="team">
+    <div class="team-heading">
+     <h3> Meet Our Specialist</h3>
+     <p> Description of doctors we have</p>
+    </div>
+
+    <div class="team-box-container">
+        <!--Swiper-->
+        <div class="swiper mySwiperteam">
+            <div class="swiper-wrapper">
+               <!--slide1-->
+                <div class="swiper-slide">
+                     <div class="team-box">
+                        <div class="team-img">
+                           <img src="{% static 'images/d1.png' %}" alt="">
+                        </div>
+                       <div class="team-text">
+                           <strong>Dr. Paradox Alex</strong>
+                           <span>Pulmologist</span>
+                       </div>
+                     </div>
+                </div><!---slide end-->
+                               <!--slide2-->
+                               <div class="swiper-slide">
+                                <div class="team-box">
+                                   <div class="team-img">
+                                      <img src="{% static 'images/d2.png'%}i" alt="">
+                                   </div>
+                                  <div class="team-text">
+                                      <strong>Dr.Ram Poudel</strong>
+                                      <span>Pulmologist</span>
+                                  </div>
+                                </div>
+                           </div><!---slide end-->
+
+                                          <!--slide3-->
+                               <div class="swiper-slide">
+                                 <div class="team-box">
+                                   <div class="team-img">
+                                      <img src="{%static 'images/d3.png'%}" alt="">
+                                       </div>
+                                      <div class="team-text">
+                                       <strong>Dr. Shyam Tamang</strong>
+                                        <span>Pulmologist</span>
+                                     </div>
+                                     </div>
+                                   </div><!---slide end-->
+                              
+                                   <!--slide4-->
+                              <div class="swiper-slide">
+                                <div class="team-box">
+                                   <div class="team-img">
+                                      <img src="{%static 'images/d4.png' %}" alt="">
+                                   </div>
+                                  <div class="team-text">
+                                      <strong>Dr. Sarah Sigdel</strong>
+                                      <span>Pulmologist</span>
+                                  </div>
+                                </div>
+                           </div><!---slide end-->
+                                 <!--slide5-->
+                                 <div class="swiper-slide">
+                                    <div class="team-box">
+                                       <div class="team-img">
+                                          <img src="{%static 'images/d5.png'%}" alt="">
+                                       </div>
+                                      <div class="team-text">
+                                          <strong>Dr. Hannah Sigdel</strong>
+                                          <span>Pulmologist</span>
+                                      </div>
+                                    </div>
+                               </div><!---slide end-->
+            </div><!--wrapper end-->
+            <div class="swiper-pagination"></div>
+        </div> <!--swiper end-->
+    </div>
+
+</section>
+
+<!--Testimonial section banaune bhae-->
+<section id="contact-us">
+    <div class="contact-form">
+        <div class="text-part">
+            <h1>Contact Us</h1>
+        <p>Have a question or want to get in touch? We'd love to hear from you!</p>
+        </div>
+        
+        <div class="container">
+            <div class="main">
+                <div class="content">
+                    <h2>Contact Us</h2>
+                    <form action="#" method="post">
+                        <input type="text" name="name" placeholder="Enter Your Name">
+                      
+                        <input type="email" name="name" placeholder="Enter Your Email">
+                        <textarea name="message" placeholder="Your Message"></textarea>                   
+                   
+                   <a href="#">
+                    <i class="fas fa-paper-plane"></i>
+                    Send</a>
+                    </form>
+                </div>
+                <div class="form-img">
+                    <img src="{% static 'images/bg1.png'%}" alt="">
+                </div>
+            </div>
+        </div>
+    </div> 
+</section>
+<footer>
+<div class="footer-container">
+    <div class="footer-company-box">
+        <a href="#" class="logo">Pneumo<span>Scan</span></a>
+        <p>Access your test results securely and conveniently from anywhere with an internet connection.</p>
+        <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a> 
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+    </div>
+    <div class="footer-link-box">
+        <strong>Main Link's</strong>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#our-story">About</a></li>
+            <li><a href="#our-services">Services</a></li>
+            <li><a href="#contact-us">Contact Us</a></li>
+            <li><a href="#">Blogs</a></li>
+        </ul>
+    </div>
+    <div class="footer-link-box">
+        <strong>Main Link's</strong>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Blogs</a></li>
+        </ul>
+    </div>
+    <div class="footer-link-box">
+        <strong>Main Link's</strong>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Blogs</a></li>
+        </ul>
+    </div>
+</div>
+<div class="footer-bottom">
+    <span>Here for your Service</span>
+    <span>Copyright 2025- PneumoScan</span>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/script.js'%}"></script>
+</body>
+</html>

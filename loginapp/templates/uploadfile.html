@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PneumoScan</title>
+    <link rel="stylesheet" href="{% static 'css/uploadfile.css'%}">
+    <link rel="shortcut icon" href="{% static 'images/abc.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <section id="hero">
+        <nav class="navigation">
+            <input type="checkbox" class="menu-btn" id="menu-btn">
+            <label for="menu-btn" class="menu-icon">
+                <span class="nav-icon"></span>
+            </label>
+            <div class="logoo">
+                <a href="{% url 'dashboard'%}#hero" class="logo">Pneumo<span>Scan</span></a>
+                <p>AI For Pneumonia Detection</p>
+            </div>
+            <ul class="menu">
+                <li><a href="{% url 'dashboard'%}#hero">Home</a></li>
+                <li><a href="{% url 'dashboard'%}#our-services">Our Services</a></li>
+                <li><a href="{% url 'dashboard' %}#contact-us">Contact us</a></li>
+                <li><a href="#">Blogs</a></li>
+            </ul>
+            <a href="#" class="chatbot-button">ChatBot</a>
+        </nav>
+        <form method="post" enctype="multipart/form-data" action="{% url 'pneumonia_div' %}">
+
+            {% csrf_token %}
+        <div class="hero-content">
+            <h1>Pneumonia Detection</h1>
+            <p>AI-powered analysis of chest X-rays for rapid and accurate pneumonia detection.</p>
+                <label for="input-file" id="drop-area">
+                <input type="file" accept="image/*" id="input-file" hidden>
+                <div id="img-view">
+                      <img src="{%static 'images/508-icon.png'%}">
+                      <p>Drag and drop or click here<br>to upload image</p>
+                      <span>Upload the X-ray image from your device</span>
+                </div>
+            </label>  
+            <button id="check-btn"type="submit">Check</button> 
+            <div id="result">
+                {% if result %}
+                <h2>Prediction:{{result}}</h2>
+                {% endif %}
+
+
+
+
+            </div>      
+        </div>
+    </form>
+    </section>
+    <script src="{% static 'js/upload.js' %}">
+    </script>
+</body>
+</html>

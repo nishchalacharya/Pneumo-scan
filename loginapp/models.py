@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.urls import reverse
+from  datetime import datetime,date
 # Create your models here.
 
 class Profile(models.Model):
@@ -12,3 +13,27 @@ class Profile(models.Model):
     
     def __str__(self):
         return f'{self.user.username} and is doctor: {self.is_doctor}'
+    
+    
+    
+class blog_post(models.Model):
+    title=models.CharField(max_length=50)
+    body=models.CharField(max_length=100)
+    author =models.ForeignKey(User,on_delete=models.CASCADE)
+    post_date=models.DateField(auto_now_add=True)
+    
+    
+    def __str__(self):
+        return f'{self.author} and {self.title}'
+    
+    def get_absolute_url(self):
+        return reverse("detailblogview",args=(str(self.id)) )
+    
+    
+    
+class xray_image(models.Model):
+    xray_image=models.ImageField(upload_to='x_rays_uploaded/',blank=False)    
+    
+    
+    
+    
