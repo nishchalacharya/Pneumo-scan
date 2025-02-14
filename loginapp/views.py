@@ -188,10 +188,10 @@ def update_profile(request):
         form=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('profile_view')
         else:
             form=ProfileForm(instance=request.user.profile)
-    return render(request,'editmyprofile.html',{'form':form})    
+    return render(request,'editprofile.html',{})    
 
 
 

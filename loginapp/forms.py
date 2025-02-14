@@ -28,5 +28,5 @@ class ProfileForm(forms.Form):
 class Xrayimage(forms.ModelForm):
     class Meta:
         model=xray_image
-        fields=['xray_image']
+        fields=['xray_image','xray_author']
         

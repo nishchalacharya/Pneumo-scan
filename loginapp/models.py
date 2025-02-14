@@ -32,7 +32,18 @@ class blog_post(models.Model):
     
     
 class xray_image(models.Model):
-    xray_image=models.ImageField(upload_to='x_rays_uploaded/',blank=False)    
+    xray_image=models.ImageField(upload_to='x_rays_uploaded/',blank=False) 
+    xray_author=models.ForeignKey(User,on_delete=models.CASCADE)   
+    
+    def __str__(self):
+        return f'{self.xray_author}'
+    
+    
+    
+    
+    
+    
+    
     
     
     
