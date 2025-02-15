@@ -6,7 +6,7 @@ from  datetime import datetime,date
 
 class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    bio=models.TextField(blank=True,null=True)
+    phoneno=models.TextField(blank=True,null=True)
     is_doctor=models.BooleanField(default=False)
     profile_pic=models.ImageField(upload_to='profile_pictures/',default='profile_pictures/default.jpg',blank=True)
     
@@ -33,10 +33,10 @@ class blog_post(models.Model):
     
 class xray_image(models.Model):
     xray_image=models.ImageField(upload_to='x_rays_uploaded/',blank=False) 
-    xray_author=models.ForeignKey(User,on_delete=models.CASCADE)   
+    # xray_author=models.ForeignKey(Profile,on_delete=models.CASCADE)   
     
-    def __str__(self):
-        return f'{self.xray_author}'
+    # def __str__(self):
+    #     return f'{self.xray_author}'
     
     
     

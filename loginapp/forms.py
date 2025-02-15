@@ -23,10 +23,11 @@ class LoginForm(forms.Form):
 class ProfileForm(forms.Form):
     class Meta:
         model=Profile
-        fields=['is_doctor','bio','profile_pic']         
+        fields=['is_doctor','phoneno','profile_pic']         
     
 class Xrayimage(forms.ModelForm):
     class Meta:
         model=xray_image
-        fields=['xray_image','xray_author']
+        # fields=['xray_image','xray_author']
+        fields=['xray_image']
         

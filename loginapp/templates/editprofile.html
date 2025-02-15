@@ -1,0 +1,84 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PneumoScan</title>
+    <link rel="stylesheet" href="{% static 'css/editmyprofile.css'%}">
+    <link rel="shortcut icon" href="images/abc.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <section id="hero">
+      
+        <nav class="navigation">
+            <div class="logoo">
+                <a href="index.html#hero" class="logo">Pneumo<span>Scan</span></a>
+                <p>AI For Pneumonia Detection</p>
+            </div>
+            <ul class="menu">
+                <li><a href="{% url 'dashboard'%}#hero">Home</a></li>
+                <li><a href="{% url 'dashboard'%}#our-services">Our Services</a></li>
+                <li><a href="{% url 'dashboard' %}#contact-us">Contact us</a></li>
+                <li><a href="#">Blogs</a></li>
+            </ul>
+            <a href="#" class="chatbot-button">ChatBot</a>
+        </nav>
+
+        <div class="hero-content">
+            <div class="profile-card">
+              <!-- Add CSRF token inside a hidden form 
+                <form id="profile-form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}-->
+                    <button type="button" class="save-btn">Save</button>
+                    <form post="post">
+                        {csrf_token}
+                    <div class="profile-section">
+                        
+                        <div class="profile-picture-container">
+                            <img src="{% static 'images/profilepic.png'%}" alt="Profile Picture" class="profile-picture" id="profile-preview">
+                            <label for="file-input" class="upload-overlay">
+                                <span class="camera-icon"><i class="fa-solid fa-camera"></i></span>
+                            </label>
+                        </div>
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label class="field-label">Name</label>
+                        <input type="text" class="field-input" id="name" value="Ram Poudel">
+                    </div>
+                    
+                    <div class="field-group">
+                        <label class="field-label">Email</label>
+                        <input type="email" class="field-input" id="email" value="rampoudel@gmail.com">
+                    </div>
+                    
+                    <div class="field-group">
+                        <label class="field-label">Phone Number</label>
+                        <input type="tel" class="field-input" id="phone" placeholder="Not Set">
+                    </div>
+                    
+                    <div class="field-group">
+                        <label class="field-label">Role</label>
+                        <select class="field-input" id="role">
+                            <option value="patient">Patient</option>
+                            <option value="doctor">Doctor</option>
+                        </select>
+                    </div>
+                
+                </form>
+            </div>
+        </div>
+   
+    </section>
+
+    <script src="{% static 'js/editmyprofile.js'%}"></script>
+</body>
+</html>

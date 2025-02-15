@@ -39,7 +39,7 @@
             <h1>Pneumonia Detection</h1>
             <p>AI-powered analysis of chest X-rays for rapid and accurate pneumonia detection.</p>
                 <label for="input-file" id="drop-area">
-                <input type="file" accept="image/*" id="input-file" hidden>
+                <input type="file" name = 'xray_image' accept="image/*" id="input-file" hidden>
                 <div id="img-view">
                       <img src="{%static 'images/508-icon.png'%}">
                       <p>Drag and drop or click here<br>to upload image</p>
@@ -48,9 +48,11 @@
             </label>  
             <button id="check-btn"type="submit">Check</button> 
             <div id="result">
-                {% if result %}
+                 {% if result  %} 
                 <h2>Prediction:{{result}}</h2>
-                {% endif %}
+                {% else %}
+                {% comment %} <h2>No result available:</h2> {% endcomment %}
+                 {% endif %} 
 
 
 
