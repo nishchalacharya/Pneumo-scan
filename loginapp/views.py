@@ -37,23 +37,7 @@ def registration_view(request):
         form=UserRegisterForm()
     return  render(request,'signup.html',{'form':form})
 
-# #Login Views
-
-# def login_view(request):
-#     if request.method=="POST":
-#         form=LoginForm(request.POST)
-#         if form.is_valid():
-#             username=form.cleaned_data['username']
-#             password=form.cleaned_data['password'] 
-#             user=authenticate(request,username=username,password=password)
-#             if user is  not None:
-#                 login(request,user)
-#                 return redirect('dashboard')
-#             else:
-#                 messages.error(request,"Invalid Username or password.Please try again.")
-#     else:
-#         form=LoginForm()
-#     return render(request,'login.html',{'form':form})     
+   
 
 
 
@@ -86,7 +70,16 @@ def services_page(request):
     return render(request,'uploadfile.html',{})
 
 def contacts_page(request):
-    return render(request,'Contacts.html',{}) 
+    if request.method=='POST':
+        form=Feedbackpage(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            return redirect('dashboard')
+                
+        
+        
+    return render(request,'index.html',{}) 
 
 def chatbot_page(request):
     return render(request,'chatbot.html',{})
@@ -160,48 +153,10 @@ from django.http import JsonResponse
 
 
 
-# def pneumonia_div(request):
-#     """Handles file upload, makes predictions, and renders results."""
-#     if request.method == "POST":
-#         # Get the uploaded image file
-#         image_file = request.FILES.get("xray_image")  # Match name in HTML form
-#         if not image_file:
-#             return JsonResponse({"error": "No image uploaded"}, status=400)
 
-#         # Save the uploaded image instance
-#         xray_instance = Xrayimage(xray_image=image_file)
-#         xray_instance.save()
-
-#         # Save image path for processing
-#         image_path = xray_instance.xray_image.path  # Path to the saved image file
-
-#         # Make prediction using the model
-#         result = predict_images(image_path)
-
-#         # Render the result page with prediction
-#         return render(request, "uploadfile.html", {
-#             "result": result  # Pass the prediction result to the template
-#         })
-
-#     # For GET requests, just render the form
-#     return render(request, "uploadfile.html")
 
       
-            
-           
-         
-
-
-
-
-
-
-    
-
-
-
-# densenet_model=joblib.load('')
-
+        
 MODEL_PATH="./ai_models/densenet_finetuned.h5"
 densenet_model=tf.keras.models.load_model(MODEL_PATH)
 
@@ -239,15 +194,15 @@ def update_profile(request):
            
     
 
-
+@login_required
 def view_profile(request):
-    
-    return render(request,'myprofile.html',{})
+    profile,created=Profile.objects.get_or_create(user=request.user) #fetch profile link to user and # auto creates if not exists
+    return render(request,'myprofile.html',{'profile':profile})
 
 
 class  BlogHome(ListView):
     model=blog_post
-    template_name='blog_home.html'
+    template_name='blog.html'
     ordering=['-post_date']
     
     
@@ -265,63 +220,6 @@ class AddPostview(CreateView):
     
     
     
+
     
-# ------------------------------------------------------------------------- esparsh ml 
-
-
-# import os
-# import numpy as np
-# import tensorflow as tf
-# import cv2
-# from django.shortcuts import render
-# from django.conf import settings
-
-#  # Assuming you have a form for uploading images
-# from PIL import Image
-# from django.core.files.storage import default_storage
-# from django.core.files.base import ContentFile
-
-
-
-
-
-
-# # Create a function to preprocess images for prediction
-# def preprocess_image(image_file):
-#     # Open the image using PIL
-#     img = Image.open(image_file)
-#     # Resize the image to match the input size expected by the model (224x224)
-#     img = img.resize((224, 224))
-#     # Convert image to numpy array
-#     img = np.array(img)
-#     # Convert from RGB to BGR (since OpenCV uses BGR)
-#     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-#     # Normalize the image to [0, 1] range
-#     img = img / 255.0
-#     # Add an extra dimension to match the model input shape (batch size)
-#     img = np.expand_dims(img, axis=0)
-#     return img
-
-# # Prediction view to handle image upload and model prediction
-# def ulcer_detection_view(request):
-#     if request.method == 'POST' and request.FILES.get('image'):
-#         uploaded_image = request.FILES['image']
-        
-#         # Preprocess the image for prediction
-#         image = preprocess_image(uploaded_image)
-        
-#         # Predict using the trained model
-#         prediction = model.predict(image)
-        
-#         # Determine result based on prediction
-#         result = 'Ulcer' if prediction[0][0] > 0.5 else 'No Ulcer'
-        
-#         # Save the uploaded image temporarily to display it
-#         image_path = default_storage.save(f'uploads/{uploaded_image.name}', ContentFile(uploaded_image.read()))
-#         image_url = default_storage.url(image_path)
-
-#         # Return the result and image URL to the template
-#         return render(request, 'result.html', {'result': result, 'image_url': image_url})
-
-#     # If GET request or invalid image, render the image upload form
-#     return render(request, 'upload.html')
+    

@@ -790,4 +790,18 @@ footer{
         display:none;
     }
 }
+
+
+/* ---------------------- */
+ df-messenger {
+            --df-messenger-bot-message: white;
+            --df-messenger-button-titlebar-color: #003f7f;
+            --df-messenger-button-titlebar-font-color: white;
+            --df-messenger-chat-background-color:  white;
+            --df-messenger-font-color:  #000000;
+            --df-messenger-send-icon: #1E90FF;
+            --df-messenger-user-message: white;
+        }
+
+
     

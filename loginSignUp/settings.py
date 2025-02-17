@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-x)5x75n$lf0wy)@p((a+v6^a1!wwt_1p4$hty6!v5dxke+co$w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "loginapp",
     "channels",
-    "chatapp"
+    "chatapp",
+    "corsheaders"
+   
 ]
 
 ASGI_APPLICATION = 'loginSignUp.asgi.application'  # requires for channel in django  along with channel layers as mentioned below: 
@@ -59,7 +61,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware'
 ]
+
+# ROOT_URLCONF = "dialogflow_maps_integration.urls"
 
 ROOT_URLCONF = "loginSignUp.urls"
 
@@ -138,6 +143,15 @@ MEDIA_ROOT=BASE_DIR/'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+
+# GOOGLE_MAPS_API_KEY = 'AIzaSyDnOQE5TZiGzta1I3AIlKT-MYzUIdE5uAY'
+
+
+
 
 
 

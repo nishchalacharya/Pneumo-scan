@@ -31,10 +31,10 @@
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#our-services">Our Services</a></li>
                 <li><a href="#contact-us">Contact us</a></li>
-                <li><a href="#">Blogs</a></li>
+                <li><a href="{% url 'bloghome'%}">Blogs</a></li>
             </ul>
             
-            <a href="#" class="chatbot-button">ChatBot</a>
+            <a href="{% url 'logout'%}" class="chatbot-button">Log Out</a>
         </nav>
         <div class="hero-content">
             <div class="hero-text">
@@ -222,9 +222,10 @@
                 <div class="content">
                     <h2>Contact Us</h2>
                     <form action="#" method="post">
+                        
                         <input type="text" name="name" placeholder="Enter Your Name">
                       
-                        <input type="email" name="name" placeholder="Enter Your Email">
+                        <input type="email" name="email" placeholder="Enter Your Email">
                         <textarea name="message" placeholder="Your Message"></textarea>                   
                    
                    <a href="#">
@@ -288,5 +289,26 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{% static 'js/script.js'%}"></script>
+
+<!-- Chatbot Start  -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="JS/script.js"></script>
+
+<!-- Dialogflow chatbot script -->
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+<!-- Dialogflow chatbot -->
+<df-messenger
+  chat-icon="https://png.pngtree.com/png-clipart/20230401/original/pngtree-smart-chatbot-cartoon-clipart-png-image_9015126.png"
+  intent="WELCOME"
+  chat-title="Pneumoscan"
+  agent-id="e9095162-4613-4375-b2d0-b0fb915de03d"
+  language-code="en"
+></df-messenger>
+
+<!-- Chatbot end -->
+
+
 </body>
 </html>

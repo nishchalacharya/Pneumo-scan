@@ -10,3 +10,5 @@ from .models  import *
 admin.site.register(Profile)    
 admin.site.register(blog_post)
 admin.site.register(xray_image)
+
+admin.site.register(contact_us)

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PneumoScan</title>
-    <link rel="stylesheet" href="{%static 'css/myprofile.css'%}">
-    <link rel="shortcut icon" href="images/abc.png">
+    <title>PneumoScan</title>   
+    <link rel="stylesheet" href="{% static 'css/myprofile.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/abc.png' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
                 <span class="nav-icon"></span>
             </label>
             <div class="logoo">
-                <a href="{% url 'dashboard'%}#hero" class="logo">Pneumo<span>Scan</span></a>
+                <a href="{% url 'dashboard' %}#hero" class="logo">Pneumo<span>Scan</span></a>
                 <p>AI For Pneumonia Detection</p>
             </div>
             <ul class="menu">
@@ -40,25 +40,26 @@
                <div class="borderkolagi">
                  <div class="profile-section">
                     <div class="profile-picture-container">
-                        <img src="images/profilepic.png" alt="Profile Picture" class="profile-picture">
+                        <img src="{{ profile.profile_pic.url|default:'/media/profile_pictures/default.jpg' }}" alt="Profile Picture" class="profile-picture">
+
                     </div>
                 </div>
             </div>
                  <div class="field-group">
                   <label class="field-label">Name</label>
-                  <p>Ram Poudel</p>
+                  <p>{{profile.user.username}}</p>
                  </div>
                  <div class="field-group">
                    <label class="field-label">Email</label>
-                   <p>rampoudel@gmail.com</p>
+                   <p>{{profile.user.email}}</p>
                  </div>
                  <div class="field-group">
                    <label class="field-label">Phone Number</label>
-                   <p>Not Set</p>
+                   <p>{{profile.phoneno}}</p>
                  </div>
                  <div class="field-group">
                    <label class="field-label">Role</label>
-                   <p>Undefined</p>
+                   <p>{% if profile.is_doctor %}Yes {% else %}No  {% endif %}</p>
                  </div>
             </div>
         </div>

@@ -1,54 +1,146 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <title>PnuemoX-RayNet</title>
-    <link rel="stylesheet" href="{% static 'css/chatbot.css'%}">
+    <title>Pneumo-XRay-Net - Pneumonia Detection Chatbot</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #1E90FF, #87CEFA);
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #003f7f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: bold;
+        }
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.5em;
+            font-style: italic;
+        }
+        main {
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 750px;
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .card h2 {
+            color: #003f7f;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        .card p {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+        df-messenger {
+            --df-messenger-bot-message: white;
+            --df-messenger-button-titlebar-color: #003f7f;
+            --df-messenger-button-titlebar-font-color: white;
+            --df-messenger-chat-background-color:  white;
+            --df-messenger-font-color:  #000000;
+            --df-messenger-send-icon: #1E90FF;
+            --df-messenger-user-message: white;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #003f7f;
+            color: white;
+            box-shadow: 0 -4px 8px rgba(193, 6, 6, 0.76);
+            font-size: 1.2em;
+        }
+        footer p {
+            margin: 0;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 </head>
 <body>
-    <div class="wrapper">
-        
-    <div class="navbar">
-        <div class="navbar-left">
-            <img src="abc.png" alt="Left Logo" class="logo-left">
+    <header>
+        <h1>Pneumo-XRay-Net</h1>
+        <p>Your Smart Pneumonia Detection Assistant</p>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Welcome to Pneumo-XRay-Net!</h2>
+            <p>
+                This AI-powered chatbot provides valuable insights on pneumonia, its causes,
+                effects, and symptoms. Receive personalized recommendations and nearby doctor
+                or hospital suggestions based on your results.
+            </p>
         </div>
-             <nav>
-                <a href="{% url 'dashboard'%}" class="nav-item" data-page="home">Home</a>
-                <a href="{% url 'about_page' %}" class="nav-item" data-page="about">About</a>
-                <a href="{% url 'service_page' %}" class="nav-item" data-page="services">Services</a>
-                <a href="{% url 'contact_page' %}" class="nav-item" data-page="contacts">Contacts</a>
-                 <a href="{% url 'login' %}" class="nav-item" data-page="sign-out">Sign Out</a>
-             </nav>
-    </div>
-    <div id="chatbot-container">
-        <div id="chatbot-header">PneumoX-RayNet Assistant</div>
-        <div id="chatbot-messages"></div>
-        <div id="chatbot-input">
-            <input type="text" id="user-input" placeholder="Type your message...">
-            <button id="send-button">Send</button>
-        </div>
-    </div>
+    </main>
 
-  
-    <script src="chatbot.js">
+    <!-- Chatbot Integration -->
+    <df-messenger
+        intent="WELCOME"
+        chat-title="Pneumo-XRay-Net"
+        agent-id="e9095162-4613-4375-b2d0-b0fb915de03d"
+        language-code="en"
+    ></df-messenger>
+
+    <footer>
+        <p>&copy; 2025 Pneumo-XRay-Net. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            window.addEventListener('dfMessengerLoaded', function(event) {
+                const dfMessenger = document.querySelector("df-messenger");
+                const dfChat = dfMessenger.shadowRoot.querySelector("df-messenger-chat");
+                const dfInput = dfChat.shadowRoot.querySelector("df-messenger-user-input");
+    
+                const sheet = new CSSStyleSheet();
+                sheet.replaceSync(`
+                    div.chat-wrapper[opened="true"] {
+                        width: 500px !important;
+                        height: 700px !important;
+                    }
+                `);
+                dfChat.shadowRoot.adoptedStyleSheets = [sheet];
+            });
+        });
     </script>
-    <div class="wrapper">
-        <div class="box">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-    </div>
     
 </body>
 </html>
+
