@@ -30,7 +30,7 @@
                 <li><a href="{% url 'dashboard' %}#contact-us">Contact us</a></li>
                 <li><a href="{% url 'bloghome'%}">Blogs</a></li>
             </ul>
-            <a href="#" class="chatbot-button">ChatBot</a>
+            <a href="{% url 'logout'%}" class="chatbot-button">Log Out</a>
         </nav>
         <form method="post" enctype="multipart/form-data" action="{% url 'pneumonia_div' %}">
 
@@ -50,6 +50,7 @@
             <div id="result">
                  {% if result  %} 
                 <h2>Prediction:{{result}}</h2>
+                <img src="{{image_url}}" alt="image">
                 {% else %}
                 {% comment %} <h2>No result available:</h2> {% endcomment %}
                  {% endif %} 
@@ -69,7 +70,7 @@
 <!-- Chatbot Start  -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="JS/script.js"></script>
+<script src="{% static 'js/script.js'%}"></script>
 
 <!-- Dialogflow chatbot script -->
 <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>

@@ -1,5 +1,88 @@
-<h1>{{blog_post.title}}</h1>
+{% comment %} <h1>{{blog_post.title}}</h1>
 <small> BY:{{blog_post.author.username}}</small>
 <hr>
 <br>
-{{blog_post.body}}
+{{blog_post.body}} {% endcomment %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Detail</title>
+    <link rel="stylesheet" href="{%static 'css/blogdetail.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/abc.png'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+</head>
+<body>
+
+
+    <section id="hero">
+        <nav class="navigation">
+            <input type="checkbox" class="menu-btn" id="menu-btn">
+            <label for="menu-btn" class="menu-icon">
+                <span class="nav-icon"></span>
+            </label>
+            <div class="logoo">
+                <a href="{% url 'dashboard'}" class="logo">Pneumo<span>Scan</span></a>
+                <p>AI For Pneumonia Detection</p>
+            </div>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Our Services</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+            </ul>
+            <a href="#" class="chatbot-button" onclick="toggleChatbot()">ChatBot</a>
+        </nav>
+    </section>
+
+    <header>
+        <header>
+            <div class="header-content">
+                <h1 id="blogTitle" name="title">How AI is Revolutionizing Medical Imaging</h1>
+                <small id="blogMeta" class="blog-meta" name="author">By Dr. Emily Roberts </small>
+                <small id="blogMeta" class="blog-meta" name="post_date">• February 18, 2025</small>
+            </div>
+        </header>
+        
+        <div class="container">
+            <p id="blogContent" name="body">
+                Artificial Intelligence (AI) is rapidly transforming the landscape of medical imaging, ushering in a new era of diagnostic capabilities and patient care.  From the subtle nuances of pneumonia detection in chest X-rays to the intricate identification of cancerous tumors in mammograms, AI-powered tools are empowering healthcare professionals with faster, more accurate diagnoses. This transformative potential is driven by AI's ability to process and analyze vast quantities of medical image data at speeds far exceeding human capacity, revealing patterns and insights that might otherwise be missed.  This not only improves diagnostic accuracy but also significantly reduces the workload on radiologists, allowing them to focus on more complex cases and ultimately improving patient outcomes.
+
+                One of the most significant advantages of AI in medical imaging lies in its capacity to sift through massive datasets in mere seconds.  AI models are trained on thousands, even millions, of images, learning to recognize subtle anomalies and patterns indicative of disease. This extensive training allows the AI to develop a level of expertise that can surpass human capabilities in certain areas, particularly in identifying early-stage diseases that may be difficult to detect with the naked eye.  For instance, AI algorithms can analyze mammograms with exceptional precision, identifying microcalcifications and other subtle indicators of breast cancer that might be easily overlooked by a human radiologist.  This early detection can be crucial in improving treatment outcomes and patient survival rates.
+                
+                Furthermore, the increasing accessibility of AI-assisted diagnostics is proving to be a game-changer, especially for underserved communities and rural areas with limited access to specialist physicians.  In regions where radiologists are scarce, AI-powered systems can provide a vital lifeline, enabling healthcare workers to obtain accurate diagnoses quickly and efficiently.  This democratization of access to advanced healthcare technology has the potential to bridge the gap in healthcare disparities and improve the quality of care for patients in remote locations.  Imagine a small clinic in a rural village equipped with an AI-powered diagnostic tool capable of analyzing medical images with the same accuracy as a specialist in a major city hospital.  This is the promise that AI brings to the field of medical imaging.
+                
+                Beyond diagnostics, AI is also playing a crucial role in other areas of medical imaging, such as image reconstruction, image enhancement, and treatment planning.  AI algorithms can be used to reconstruct high-quality images from low-dose scans, reducing radiation exposure for patients.  They can also enhance image quality, making it easier for radiologists to interpret the results.  In addition, AI is being used to develop personalized treatment plans based on individual patient data and imaging findings.  For example, AI can analyze MRI scans of brain tumors to predict how a patient will respond to different treatments, allowing doctors to tailor their approach for optimal outcomes.
+                
+                Despite the remarkable progress made in AI-driven medical imaging, several challenges remain.  One of the primary hurdles is the need for large, high-quality datasets to train AI models effectively.  Developing and curating these datasets can be a complex and expensive undertaking.  Furthermore, ensuring the data is representative of diverse patient populations is crucial to avoid bias and ensure that the AI algorithms perform accurately across different demographics.
+                
+                Ethical considerations also play a significant role in the development and deployment of AI in medical imaging.  Issues such as data privacy, patient consent, and algorithmic transparency need to be carefully addressed.  It is essential to ensure that patient data is protected and that AI algorithms are used in a responsible and ethical manner.  Furthermore, the potential impact of AI on the role of radiologists and other healthcare professionals needs to be considered.  While AI is not intended to replace human doctors, it is likely to change the way they work, requiring them to adapt to new technologies and workflows.
+                
+                Another significant challenge is the regulatory landscape surrounding AI in medical imaging.  Regulatory bodies are still grappling with how to evaluate and approve AI-based diagnostic tools.  Clear guidelines and standards are needed to ensure that these tools are safe and effective before they can be widely adopted.  Gaining regulatory approvals can be a lengthy and complex process, which can slow down the development and deployment of new AI-powered solutions.
+                
+                Despite these challenges, the future of AI in medical imaging is bright.  With continued research and innovation, AI is expected to further revolutionize the healthcare industry, leading to earlier and more accurate diagnoses, personalized treatment plans, and improved patient outcomes.  As AI technology matures and the challenges are addressed, we can expect to see even more transformative applications emerge, ultimately leading to a future where healthcare is more efficient, effective, and accessible to all.  The convergence of AI and medical imaging holds immense promise for transforming healthcare and improving the lives of millions of people around the world.
+            </p>
+        </div>
+
+   <!-- <div class="container">
+        <div class="blog-detail">
+            <h2 id="blogTitle"></h2>
+            <small id="blogAuthor"></small>
+            <small id="blogDate"></small>
+            <p id="blogContent"></p>
+        </div>
+    </div>--> 
+    <a href="{% url 'blog.html'%}" class="btn">Back to Blogs</a>
+    <script src="js/blog-detail.js"></script>
+
+</body>
+</html>

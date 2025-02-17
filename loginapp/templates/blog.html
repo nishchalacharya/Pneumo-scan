@@ -1,4 +1,4 @@
-{% load static %}
+{% comment %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +23,7 @@
                 <li><a href="{% url 'dashboard' %}#contact-us">Contact us</a></li>
                 <li><a href="{% url 'bloghome' %}">Blogs</a></li>
             </ul>
-            <a href="#" class="chatbot-button" onclick="toggleChatbot()">ChatBot</a>
+            <a href="#" class="logout" onclick="toggleChatbot()">ChatBot</a>
         </nav>
     </section>
 
@@ -42,7 +42,7 @@
     </header>
 
     <div class="container" id="posts-container">
-        {% for post in object_list %}
+        {% for post in posts %}
         <article class="post">
             <div class="post-header">
                 <h2 class="post-title">{{ post.title }}</h2>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="post-content">
-                <p>{{ blog_post.body }}</p>
+                <p>{{ post.body }}</p>
             </div>
         </article>
         {% empty %}
@@ -82,4 +82,116 @@
     {% endif %}
 
 </body>
+</html> {% endcomment %}
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PneumoScan</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+    <link rel="shortcut icon" href="{% static 'images/abc.png'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+
+    <section id="hero">
+        <nav class="navigation">
+            <input type="checkbox" class="menu-btn" id="menu-btn">
+            <label for="menu-btn" class="menu-icon">
+                <span class="nav-icon"></span>
+            </label>
+            <div class="logoo">
+                <a href="index.html" class="logo">Pneumo<span>Scan</span></a>
+                <p>AI For Pneumonia Detection</p>
+            </div>
+            <ul class="menu">
+                <li><a href="{% url 'dashboard'%}#hero">Home</a></li>
+                <li><a href="{% url 'dashboard'%}#our-services">Our Services</a></li>
+                <li><a href="{% url 'dashboard' %}#contact-us">Contact us</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+            </ul>
+            <a href="{% url 'logout'%}" class="chatbot-button" onclick="toggleChatbot()">Log Out</a>
+        </nav>
+    </section>
+
+    <header>
+        <div class="header-content">
+            <h1>Blogs Section</h1>
+            <div class="user-info">
+                <span id="userDisplayName">Welcome, <span id="username"></span></span>
+                <button class="create-post-btn" onclick="openModal()">Create New Post</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" id="posts-container">
+
+        <div class="post" name="post">
+            <h2 name="title">Future of AI in Medical Imaging</h2>
+            <p class="post-preview" name="postPreview">
+                AI-powered imaging tools are revolutionizing healthcare, reducing diagnosis times, and improving accuracy...
+            </p>
+            <small class="blog-meta" name="author">By Alex Johnson</small>
+            <small class="blog-meta" name="post-date">February 10, 2025</small>
+            <a href="" class="btn dark" name="readMore">Read</a>
+        </div>
+        
+        <div class="post" name="post">
+            <h2 name="postTitle">How AI is Revolutionizing Medical Imaging</h2>
+            <p class="post-preview" name="postPreview">
+                Artificial Intelligence (AI) is playing a crucial role in transforming the field of medical imaging...
+            </p>
+            <small class="blog-meta" name="postAuthor">By Dr. Emily Roberts</small>
+            <small class="blog-meta" name="postDate">February 18, 2025</small>
+            <a href="blogdetail.html" class="btn dark" name="readMore">Read</a>
+        </div>
+        
+
+    </div>
+   
+  <!-- <div class="blog-modal" id="blogModal">
+        <div class="blog-modal-content">
+            <span class="close-modal" onclick="closeBlogModal()">&times;</span>
+            <h2 id="blogTitle" name="title"></h2>
+            <p id="blogContent" name="body"></p>
+            <small id="blogAuthor" name="author"></small>
+            <small id="blogDate" name="post_date"></small> 
+            
+        </div>
+    </div>--> 
+    
+
+    <div class="modal" id="createPostModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Create New Post</h2>
+            <form id="createPostForm">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea id="content" name="body" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Post</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/blog.js"></script>
+</body>
 </html>
+
+

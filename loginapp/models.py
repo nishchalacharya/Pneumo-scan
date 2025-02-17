@@ -8,7 +8,7 @@ class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     phoneno=models.TextField(blank=True,null=True)
     is_doctor=models.BooleanField(default=False)
-    profile_pic=models.ImageField(upload_to='profile_pictures/',default='profile_pictures/default.jpg',blank=True)
+    profile_pic=models.ImageField(upload_to='profile_pictures/',default='media/profile_pictures/default.png',blank=True)
     
     
     def __str__(self):

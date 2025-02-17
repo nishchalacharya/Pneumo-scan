@@ -203,6 +203,7 @@ def view_profile(request):
 class  BlogHome(ListView):
     model=blog_post
     template_name='blog.html'
+    context_object_name = 'posts'
     ordering=['-post_date']
     
     
